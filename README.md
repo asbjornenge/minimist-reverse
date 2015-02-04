@@ -25,20 +25,28 @@ This module differs in that it structures the arguments in a specific way. It al
     var argv = ['cmd','-a','--foo=bar'] 
     assert.equal(mreverse(minimist(argv)), argv.join(' ')) 
 
-    var cmd = mreverse({
+    var options = {
 	    _: ['cmd'],
 	    a: 1,
 	    b: 'b',
 	    c: true,
 	    d: true,
-	    e: false,
-	    h: [1,2,3],
-	    bar: 'baz'
+	    yay: false,
+	    foo: [1,2],
+	    bar: 'baz',
+        bad: 'nevah'
     })
-    console.log(cmd)
-    // => cmd -cd -a=1 -b=b -h=1 -h=2 -h=3 --bar=baz
+    var excludes = ['bad']
+    console.log(mreverse(options, excludes))
+    // => cmd -cd -a=1 -b=b --no-yay --foo=1 --foo=2 --bar=baz
 
 ## Changelog
+
+### 1.1.0
+
+* Indicated similar modules and specifically pointing to dargs as the one to use
+* Added support for transforming key:false -> --no-key
+* Added support for excludes
 
 ### 1.0.0
 

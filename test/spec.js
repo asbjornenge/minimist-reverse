@@ -21,3 +21,12 @@ it('supports multiple double dashed bools', function() {
     assert.equal(mreverse(minimist(argv)), argv.join(' ')) 
 }) 
 
+it('adds a --no-key for keys that have value false', function() {
+    var clicmd = mreverse({'_':['cmd'], a:true, yay:true, nay:false, meh:'bah'})
+    assert(clicmd.indexOf('--no-nay') >= 0)
+})
+
+it('supports passing an excludes array', function() {
+    var clicmd = mreverse({'_':['cmd'], yay:true, nay:false}, ['nay'])
+    assert(clicmd.indexOf('--no-nay') < 0)
+})
