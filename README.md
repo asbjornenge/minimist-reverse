@@ -3,6 +3,16 @@
 
 The reverse of [minimist](https://github.com/substack/minimist).  This module is meant to construct arguments for running other cli programs.
 
+There are multiple other modules that does this.
+
+* [dargs](https://www.npmjs.com/package/dargs)
+* [maximist](https://www.npmjs.com/package/maximist)
+* [tsiminim](https://www.npmjs.com/package/tsiminim)
+
+This module differs in that it structures the arguments in a specific way. It also includes the _ key values, first in the output. That might very well **NOT** be what you want. It also outputs a string. 
+
+**NOTE** You probably want to use [dargs](https://www.npmjs.com/package/dargs) instead of this module!
+
 ## Install
 
     npm install minimist-reverse
